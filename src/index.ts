@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
 import * as Express from 'express';
 import { buildSchema, ObjectType, Query, Resolver, Field } from 'type-graphql';
+import { arr } from './faker';
 
 @ObjectType()
 export class Todo {
@@ -12,37 +13,24 @@ export class Todo {
   data: String;
 
   @Field()
-  l: number;
+  phoneNumber: String;
+
+  @Field()
+  jobTitle: String;
+
+  @Field()
+  date: Date;
 }
 
 interface Data {
-  DataNum: string;
   data: string;
+  DataNum: string;
+  phoneNumber: String;
+  jobTitle: String;
+  date: Date;
 }
 
-const datas: Data[] = [
-  { data: 'Robin Langworth', DataNum: 'Zoie70@hotmail.com' },
-  { data: 'Tom Hane', DataNum: 'Skyla_Gutmann19@hotmail.com' },
-  { data: 'Glen Mueller', DataNum: 'Jevon_Veum14@yahoo.com' },
-  {
-    data: 'Mr. Sidney Kuhlman',
-    DataNum: 'Pinkie_Schaefer18@gmail.com',
-  },
-  { data: 'Marjorie Klocko', DataNum: 'Jessie.Kuvalis@hotmail.com' },
-  { data: 'Allen Klein', DataNum: 'Kaleigh_Mayert30@hotmail.com' },
-  { data: 'Leslie Marquardt', DataNum: 'Zelma.Nicolas17@hotmail.com' },
-  { data: 'Antonia Wintheiser', DataNum: 'Royal_Kerluke@yahoo.com' },
-  { data: 'Lynda Murphy', DataNum: 'Odell.Gulgowski@yahoo.com' },
-  { data: 'Angie Blick', DataNum: 'Devan.Schumm@yahoo.com' },
-  { data: 'Randy Smitham', DataNum: 'Orlando_Jacobs88@hotmail.com' },
-  { data: 'Evan Balistreri', DataNum: 'Leta_Deckow@gmail.com' },
-  { data: 'Joey Schneider', DataNum: 'Liliana_Pollich74@yahoo.com' },
-  { data: 'Miss Emily Johns', DataNum: 'Murphy66@hotmail.com' },
-  { data: 'Marcella Bogisich', DataNum: 'Kaylie_Kautzer@yahoo.com' },
-  { data: 'Mrs. Edward Walker', DataNum: 'Daphne52@gmail.com' },
-  { data: 'Dixie Kassulke', DataNum: 'Malachi.Stokes87@yahoo.com' },
-  { data: 'Laurence Roob DDS', DataNum: 'Mariane_Batz@yahoo.com' },
-];
+const datas: Data[] = arr;
 
 @Resolver()
 class Helloresolver {
