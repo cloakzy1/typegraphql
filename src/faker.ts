@@ -1,14 +1,8 @@
 import * as faker from 'faker';
-interface Data {
-  data: string;
-  DataNum: string;
-  phoneNumber: String;
-  jobTitle: String;
-  date: Date;
-}
+import { Data } from './Query/Interface';
 
 export let arr: Data[] = [];
-for (let i = 0; i < 69; i++) {
+for (let i = 0; i < 500; i++) {
   // let dataCollector: Data;
   // dataCollector = {
   //   data: faker.name.findName(),

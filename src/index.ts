@@ -1,44 +1,12 @@
 import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
 import * as Express from 'express';
-import { buildSchema, ObjectType, Query, Resolver, Field } from 'type-graphql';
+import { buildSchema } from 'type-graphql';
 import { arr } from './faker';
+import { Helloresolver } from './Query/Resolver';
+import { Data } from './Query/Interface';
 
-@ObjectType()
-export class Todo {
-  @Field()
-  DataNum: String;
-
-  @Field()
-  data: String;
-
-  @Field()
-  phoneNumber: String;
-
-  @Field()
-  jobTitle: String;
-
-  @Field()
-  date: Date;
-}
-
-interface Data {
-  data: string;
-  DataNum: string;
-  phoneNumber: String;
-  jobTitle: String;
-  date: Date;
-}
-
-const datas: Data[] = arr;
-
-@Resolver()
-class Helloresolver {
-  @Query(() => [Todo])
-  async hello() {
-    return datas;
-  }
-}
+export const datas: Data[] = arr;
 
 const main = async () => {
   const schema = await buildSchema({
